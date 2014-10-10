@@ -84,6 +84,7 @@ public class Game
 	public void UpdateGame(long gameTime, Point mousePosition)
 	{
 		player.update(gameTime, mousePosition);
+		player.move();
 		for (Zombie zombie : zombies)
 		{
 			zombie.update(gameTime, mousePosition);
@@ -107,5 +108,25 @@ public class Game
 			zombie.draw(g2d, mousePosition);
 		}
 		zombieSpawner.draw(g2d, mousePosition);
+	}
+
+	public PlayerFactory getPlayerFactory()
+	{
+		return playerFactory;
+	}
+
+	public List<Zombie> getZombies()
+	{
+		return zombies;
+	}
+
+	public Player getPlayer()
+	{
+		return player;
+	}
+
+	public ZombieSpawner getZombieSpawner()
+	{
+		return zombieSpawner;
 	}
 }

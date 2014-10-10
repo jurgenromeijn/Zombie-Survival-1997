@@ -291,7 +291,12 @@ public class Framework extends Canvas
 	@Override
 	public void keyReleasedFramework(KeyEvent e)
 	{
-
+		
+	}
+	
+	@Override
+	public void keyPressedFramework(KeyEvent e)
+	{
 	}
 
 	/**

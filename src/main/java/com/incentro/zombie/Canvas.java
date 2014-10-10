@@ -99,7 +99,8 @@ public abstract class Canvas extends JPanel implements KeyListener, MouseListene
 	public void keyTyped(KeyEvent e)
 	{
 	}
-
+	
+	public abstract void keyPressedFramework(KeyEvent e);
 	public abstract void keyReleasedFramework(KeyEvent e);
 
 	// --------------------------------------
