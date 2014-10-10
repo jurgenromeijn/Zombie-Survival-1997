@@ -25,6 +25,7 @@ public class ZombieFactory extends GameObjectFactory {
     public ZombieFactory(Game game) {
         this.game   = game;
         this.random = new Random();
+        loadResources();
     }
 
     private void loadResources() {
