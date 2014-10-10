@@ -1,5 +1,6 @@
 package com.incentro.zombie.game.factory;
 
+import com.incentro.zombie.Framework;
 import com.incentro.zombie.Game;
 import com.incentro.zombie.game.Player;
 import com.incentro.zombie.resources.Image;
@@ -23,7 +24,7 @@ public class PlayerFactory extends GameObjectFactory {
     }
 
     public Player create() {
-        Player player = new Player(playerImage.getImage(), 100, 100, playerImage.getWidth(), playerImage.getHeight());
+        Player player = new Player(playerImage.getImage(), Framework.frameWidth / 2, Framework.frameHeight / 2, playerImage.getWidth(), playerImage.getHeight());
         return player;
     }
 }
