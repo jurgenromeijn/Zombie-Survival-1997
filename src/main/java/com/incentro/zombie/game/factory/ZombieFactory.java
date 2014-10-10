@@ -1,5 +1,6 @@
 package com.incentro.zombie.game.factory;
 
+import com.incentro.zombie.Framework;
 import com.incentro.zombie.Game;
 import com.incentro.zombie.game.Zombie;
 import com.incentro.zombie.resources.Image;
@@ -41,7 +42,11 @@ public class ZombieFactory extends GameObjectFactory {
     public Zombie create() {
         Integer zombieIndex = random.nextInt(zombieImages.size());
         Image zombieImage = zombieImages.get(zombieIndex);
-        Zombie zombie = new Zombie(zombieImage.getImage(), 0, 0, zombieImage.getWidth(), zombieImage.getHeight());
+
+        Integer positionX = random.nextInt(Framework.frameWidth - zombieImage.getWidth());
+        Integer positionY = random.nextInt(Framework.frameHeight - zombieImage.getHeight());
+
+        Zombie zombie = new Zombie(zombieImage.getImage(), positionX, positionY, zombieImage.getWidth(), zombieImage.getHeight());
         game.getZombies().add(zombie);
         return zombie;
     }
