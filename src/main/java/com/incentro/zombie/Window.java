@@ -15,7 +15,7 @@ public class Window extends JFrame
 	private Window()
 	{
 		// Sets the title for this frame.
-		this.setTitle("Game title");
+		this.setTitle("Zombie Survival 1997");
 
 		// Sets size of the frame.
 		if (false) // Full screen mode

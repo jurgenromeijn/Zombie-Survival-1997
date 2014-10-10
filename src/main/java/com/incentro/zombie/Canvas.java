@@ -22,13 +22,14 @@ import javax.swing.JPanel;
 
 public abstract class Canvas extends JPanel implements KeyListener, MouseListener
 {
+	private static final long	serialVersionUID	= -2758641871136744239L;
 
 	// Keyboard states - Here are stored states for keyboard keys - is it down
 	// or not.
-	private static boolean[]	keyboardState	= new boolean[525];
+	private static boolean[]	keyboardState		= new boolean[525];
 
 	// Mouse states - Here are stored states for mouse keys - is it down or not.
-	private static boolean[]	mouseState		= new boolean[3];
+	private static boolean[]	mouseState			= new boolean[3];
 
 	public Canvas()
 	{
@@ -40,7 +41,8 @@ public abstract class Canvas extends JPanel implements KeyListener, MouseListene
 		// If you will draw your own mouse cursor or if you just want that mouse
 		// cursor disapear,
 		// insert "true" into if condition and mouse cursor will be removed.
-		if (false)
+		boolean showMouse = false;
+		if (showMouse)
 		{
 			BufferedImage blankCursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
 			Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(blankCursorImg, new Point(0, 0), null);
@@ -67,7 +69,9 @@ public abstract class Canvas extends JPanel implements KeyListener, MouseListene
 		Draw(g2d);
 	}
 
-	// Keyboard
+	// --------------------------------------
+
+	// Keyboard controls
 	/**
 	 * Is keyboard key "key" down?
 	 * 
@@ -98,7 +102,9 @@ public abstract class Canvas extends JPanel implements KeyListener, MouseListene
 
 	public abstract void keyReleasedFramework(KeyEvent e);
 
-	// Mouse
+	// --------------------------------------
+
+	// Mouse controls
 	/**
 	 * Is mouse button "button" down? Parameter "button" can be
 	 * "MouseEvent.BUTTON1" - Indicates mouse button #1 or "MouseEvent.BUTTON2"

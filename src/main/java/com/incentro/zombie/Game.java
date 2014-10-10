@@ -2,6 +2,12 @@ package com.incentro.zombie;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.incentro.zombie.game.Player;
+import com.incentro.zombie.game.Zombie;
+import com.incentro.zombie.game.ZombieSpawner;
 
 /**
  * Actual game.
@@ -11,6 +17,9 @@ import java.awt.Point;
 
 public class Game
 {
+	private List<Zombie>	zombies;
+	private Player			player;
+	private ZombieSpawner	zombieSpawner;
 
 	public Game()
 	{
@@ -37,7 +46,8 @@ public class Game
 	 */
 	private void Initialize()
 	{
-
+		player = new Player();
+		zombies = new ArrayList<Zombie>();
 	}
 
 	/**
@@ -66,7 +76,12 @@ public class Game
 	 */
 	public void UpdateGame(long gameTime, Point mousePosition)
 	{
-
+		player.update(gameTime, mousePosition);
+		for (Zombie zombie : zombies)
+		{
+			zombie.update(gameTime, mousePosition);
+		}
+		zombieSpawner.update(gameTime, mousePosition);
 	}
 
 	/**
@@ -79,6 +94,11 @@ public class Game
 	 */
 	public void Draw(Graphics2D g2d, Point mousePosition)
 	{
-
+		player.draw(g2d, mousePosition);
+		for (Zombie zombie : zombies)
+		{
+			zombie.draw(g2d, mousePosition);
+		}
+		zombieSpawner.draw(g2d, mousePosition);
 	}
 }
