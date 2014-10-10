@@ -14,7 +14,7 @@ import java.awt.event.MouseEvent;
 
 public class Framework extends Canvas
 {
-
+	private static final long	serialVersionUID	= -8579446909470125370L;
 	/**
 	 * Width of the frame.
 	 */

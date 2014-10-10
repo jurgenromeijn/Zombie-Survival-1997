@@ -1,6 +1,17 @@
 package com.incentro.zombie.game;
 
-public class GameObject
-{
+import java.awt.Graphics2D;
+import java.awt.Point;
 
+public abstract class GameObject
+{	
+	public void update(long gameTime, Point mousePosition)
+	{
+		
+	}
+	
+	public void draw(Graphics2D g2d, Point mousePosition)
+	{
+		
+	}
 }
