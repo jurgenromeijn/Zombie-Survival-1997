@@ -79,8 +79,8 @@ public abstract class GameObject implements ImageObserver
 		AffineTransform reset = new AffineTransform();
 		reset.rotate(0, 0, 0);
 		System.out.println(getRotation());
-		g2d.rotate(getRotation(), x, y);
-		g2d.drawImage(image, x, y, this);
+		g2d.rotate(Math.toRadians(getRotation()), x, y);
+		g2d.drawImage(image, x - (width / 2), y - (width / 2), this);
 		g2d.setTransform(reset);
 		
 	}
