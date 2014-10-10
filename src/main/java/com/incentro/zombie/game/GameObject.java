@@ -82,7 +82,6 @@ public abstract class GameObject implements ImageObserver
 		g2d.rotate(Math.toRadians(getRotation()), x, y);
 		g2d.drawImage(image, x - (width / 2), y - (width / 2), this);
 		g2d.setTransform(reset);
-		
 	}
 
 	public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height)

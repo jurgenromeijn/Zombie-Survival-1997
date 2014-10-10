@@ -26,14 +26,17 @@ public class Player extends Entity
 	
 	private void aim(Point mousePosition)
 	{
-		double x = mousePosition.getX();
-		double y = mousePosition.getY();
-		
-		double xDistance = x - getX();
-		double yDistance = y - getY();
-		
-		double angleToTurn = Math.toDegrees(Math.atan2(yDistance, xDistance));
-		setRotation(angleToTurn);
+        if (mousePosition != null && mousePosition.x >= 0 && mousePosition.y >= 0 &&
+                mousePosition.x <= Framework.frameWidth && mousePosition.y <= Framework.frameHeight) {
+            double x = mousePosition.getX();
+            double y = mousePosition.getY();
+
+            double xDistance = x - getX();
+            double yDistance = y - getY();
+
+            double angleToTurn = Math.toDegrees(Math.atan2(yDistance, xDistance));
+            setRotation(angleToTurn);
+        }
 	}
 
 	private void move()
