@@ -7,5 +7,7 @@ package com.incentro.zombie.game;
  */
 public interface IComputerCharBehaviour
 {
-
+	void init(Zombie zombie, Player player);
+	void move();
+	void update(long gametime);
 }

@@ -2,7 +2,10 @@ package com.incentro.zombie.game.factory;
 
 import com.incentro.zombie.Framework;
 import com.incentro.zombie.Game;
+import com.incentro.zombie.game.IComputerCharBehaviour;
 import com.incentro.zombie.game.Zombie;
+import com.incentro.zombie.game.ZombieFollowPlayerBehaviour;
+import com.incentro.zombie.game.ZombieRandomBehaviour;
 import com.incentro.zombie.resources.Image;
 
 import java.awt.image.BufferedImage;
@@ -46,8 +49,21 @@ public class ZombieFactory extends GameObjectFactory {
         Integer positionX = random.nextInt(Framework.frameWidth - zombieImage.getWidth());
         Integer positionY = random.nextInt(Framework.frameHeight - zombieImage.getHeight());
 
-        Zombie zombie = new Zombie(zombieImage.getImage(), positionX, positionY, zombieImage.getWidth(), zombieImage.getHeight());
-        game.getZombies().add(zombie);
+        int amountOfBehaviours = 2;
+        int chosenBehaviour = new Random().nextInt(amountOfBehaviours);
+        IComputerCharBehaviour beh;
+        if(chosenBehaviour == 0)
+        {
+        	beh = new ZombieFollowPlayerBehaviour();
+        }
+        else
+        {
+        	beh = new ZombieRandomBehaviour();
+        }
+        
+        Zombie zombie = new Zombie(zombieImage.getImage(), positionX, positionY, zombieImage.getWidth(), zombieImage.getHeight(), beh);
+        game.addZombie(zombie);
+        
         return zombie;
     }
 }

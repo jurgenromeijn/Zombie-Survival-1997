@@ -116,6 +116,12 @@ public class Game
 		return playerFactory;
 	}
 
+	public void addZombie(Zombie zombie)
+	{
+		zombie.getBehaviour().init(zombie, player);
+		this.zombies.add(zombie);
+	}
+	
 	public List<Zombie> getZombies()
 	{
 		return zombies;

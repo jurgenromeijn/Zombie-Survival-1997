@@ -5,6 +5,7 @@ import com.incentro.zombie.game.factory.ZombieFactory;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 public class ZombieSpawner extends GameObject
 {
@@ -34,7 +35,11 @@ public class ZombieSpawner extends GameObject
 	private void spawn()
 	{
 		timesSpawned += 1;
-		for(int i = 0; i < timesSpawned; i++)
+		int amount = new Random().nextInt(timesSpawned) + 1;
+		
+		System.out.println("Spawning " + amount + " zombies");
+		
+		for(int i = 0; i < amount; i++)
 		{
 			zombieFactory.create();
 		}
