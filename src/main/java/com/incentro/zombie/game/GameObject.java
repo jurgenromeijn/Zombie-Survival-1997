@@ -3,6 +3,7 @@ package com.incentro.zombie.game;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
@@ -10,7 +11,14 @@ public abstract class GameObject implements ImageObserver
 {
 	private BufferedImage	image;
     private Integer x,y,width,height;
+    private double rotation = 0d;
 
+    
+    public BufferedImage getImage()
+    {
+    	return this.image;
+    }
+    
     public Integer getX() {
         return x;
     }
@@ -29,6 +37,16 @@ public abstract class GameObject implements ImageObserver
 
     public Integer getWidth() {
         return width;
+    }
+    
+    public void setRotation(double rotation)
+    {
+    	this.rotation = rotation;
+    }
+    
+    public double getRotation()
+    {
+    	return this.rotation;
     }
 
     public void setWidth(Integer width) {
@@ -58,7 +76,13 @@ public abstract class GameObject implements ImageObserver
 
 	public void draw(Graphics2D g2d, Point mousePosition)
 	{
+		AffineTransform reset = new AffineTransform();
+		reset.rotate(0, 0, 0);
+		System.out.println(getRotation());
+		g2d.rotate(getRotation(), x, y);
 		g2d.drawImage(image, x, y, this);
+		g2d.setTransform(reset);
+		
 	}
 
 	public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height)

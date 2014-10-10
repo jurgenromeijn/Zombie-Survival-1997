@@ -86,7 +86,6 @@ public class Game
 	public void UpdateGame(long gameTime, Point mousePosition)
 	{
 		player.update(gameTime, mousePosition);
-		player.move();
 		for (Zombie zombie : zombies)
 		{
 			zombie.update(gameTime, mousePosition);
