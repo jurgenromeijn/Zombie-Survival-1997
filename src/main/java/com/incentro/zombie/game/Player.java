@@ -1,12 +1,10 @@
 package com.incentro.zombie.game;
 
-import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 import com.incentro.zombie.Canvas;
-import com.incentro.zombie.Framework;
 
 public class Player extends Entity
 {

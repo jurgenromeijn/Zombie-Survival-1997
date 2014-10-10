@@ -8,28 +8,35 @@ import java.awt.image.BufferedImage;
 
 public class ZombieSpawner extends GameObject
 {
-    ZombieFactory zombieFactory;
-    Long timeSinceLastSpawn = 0l;
-    Long lastUpdateTime = 0l;
+	ZombieFactory	zombieFactory;
+	Long			timeSinceLastSpawn	= 0l;
+	Long			lastUpdateTime		= 0l;
+	private int		timesSpawned		= 0;
 
-    public ZombieSpawner(BufferedImage image, Integer x, Integer y, Integer width, Integer height, ZombieFactory zombieFactory) {
-        super(image, x, y, width, height);
-        this.zombieFactory = zombieFactory;
-    }
+	public ZombieSpawner(BufferedImage image, Integer x, Integer y, Integer width, Integer height, ZombieFactory zombieFactory)
+	{
+		super(image, x, y, width, height);
+		this.zombieFactory = zombieFactory;
+	}
 
-    public void update(long gameTime, Point mousePosition)
-    {
-        if(timeSinceLastSpawn > (5 * Framework.secInNanosec)) {
-            spawn();
-            timeSinceLastSpawn = 0l;
-        }
-        timeSinceLastSpawn += gameTime - lastUpdateTime;
-        lastUpdateTime = gameTime;
-        super.update(gameTime, mousePosition);
-    }
+	public void update(long gameTime, Point mousePosition)
+	{
+		if (timeSinceLastSpawn > (5 * Framework.secInNanosec))
+		{
+			spawn();
+			timeSinceLastSpawn = 0l;
+		}
+		timeSinceLastSpawn += gameTime - lastUpdateTime;
+		lastUpdateTime = gameTime;
+		super.update(gameTime, mousePosition);
+	}
 
-    private void spawn()
-    {
-        zombieFactory.create();
-    }
+	private void spawn()
+	{
+		timesSpawned += 1;
+		for(int i = 0; i < timesSpawned; i++)
+		{
+			zombieFactory.create();
+		}
+	}
 }
