@@ -9,6 +9,7 @@ import com.incentro.zombie.game.Player;
 import com.incentro.zombie.game.Zombie;
 import com.incentro.zombie.game.ZombieSpawner;
 import com.incentro.zombie.game.factory.PlayerFactory;
+import com.incentro.zombie.game.factory.ZombieFactory;
 
 /**
  * Actual game.
@@ -24,7 +25,11 @@ public class Game
 	private Player			player;
 	private ZombieSpawner	zombieSpawner;
 
-	public Game()
+    public List<Zombie> getZombies() {
+        return zombies;
+    }
+
+    public Game()
 	{
 		Framework.gameState = Framework.GameState.GAME_CONTENT_LOADING;
 
@@ -50,11 +55,12 @@ public class Game
 	private void Initialize()
 	{
         playerFactory = new PlayerFactory(this);
+        ZombieFactory zombieFactory = new ZombieFactory(this);
 
 		// TODO add the bufferedimage instead of null.
-		player = playerFactory.createPlayer();
+		player = playerFactory.create();
 		zombies = new ArrayList<Zombie>();
-		zombieSpawner = new ZombieSpawner(null, 0, 0, 0, 0);
+		zombieSpawner = new ZombieSpawner(null, 0, 0, 0, 0, zombieFactory);
 	}
 
 	/**
