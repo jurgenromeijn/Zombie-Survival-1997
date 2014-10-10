@@ -48,6 +48,7 @@ public class Game
 	{
 		player = new Player();
 		zombies = new ArrayList<Zombie>();
+		zombieSpawner = new ZombieSpawner();
 	}
 
 	/**
