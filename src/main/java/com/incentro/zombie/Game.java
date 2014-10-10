@@ -46,9 +46,10 @@ public class Game
 	 */
 	private void Initialize()
 	{
-		player = new Player();
+		// TODO add the bufferedimage instead of null.
+		player = new Player(null);
 		zombies = new ArrayList<Zombie>();
-		zombieSpawner = new ZombieSpawner();
+		zombieSpawner = new ZombieSpawner(null);
 	}
 
 	/**

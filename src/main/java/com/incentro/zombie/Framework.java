@@ -92,7 +92,7 @@ public class Framework extends Canvas
 	 */
 	private void Initialize()
 	{
-
+		newGame();
 	}
 
 	/**
