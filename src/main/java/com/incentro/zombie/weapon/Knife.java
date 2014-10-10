@@ -6,10 +6,7 @@ import com.incentro.zombie.game.GameObject;
 
 public class Knife extends GameObject implements IWeaponBehaviour
 {
-
-	public Knife(BufferedImage image)
-	{
-		super(image);
-	}
-
+    public Knife(BufferedImage image, Integer x, Integer y, Integer width, Integer height) {
+        super(image, x, y, width, height);
+    }
 }

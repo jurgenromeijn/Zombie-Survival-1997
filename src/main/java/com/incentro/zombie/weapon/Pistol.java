@@ -6,10 +6,7 @@ import com.incentro.zombie.game.GameObject;
 
 public class Pistol extends GameObject implements IWeaponBehaviour
 {
-
-	public Pistol(BufferedImage image)
-	{
-		super(image);
-	}
-
+    public Pistol(BufferedImage image, Integer x, Integer y, Integer width, Integer height) {
+        super(image, x, y, width, height);
+    }
 }

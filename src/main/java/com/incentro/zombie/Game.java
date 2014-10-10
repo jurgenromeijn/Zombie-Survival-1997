@@ -8,6 +8,7 @@ import java.util.List;
 import com.incentro.zombie.game.Player;
 import com.incentro.zombie.game.Zombie;
 import com.incentro.zombie.game.ZombieSpawner;
+import com.incentro.zombie.game.factory.PlayerFactory;
 
 /**
  * Actual game.
@@ -17,7 +18,9 @@ import com.incentro.zombie.game.ZombieSpawner;
 
 public class Game
 {
-	private List<Zombie>	zombies;
+    private PlayerFactory playerFactory;
+
+    private List<Zombie>	zombies;
 	private Player			player;
 	private ZombieSpawner	zombieSpawner;
 
@@ -46,10 +49,12 @@ public class Game
 	 */
 	private void Initialize()
 	{
+        playerFactory = new PlayerFactory(this);
+
 		// TODO add the bufferedimage instead of null.
-		player = new Player(null);
+		player = playerFactory.createPlayer();
 		zombies = new ArrayList<Zombie>();
-		zombieSpawner = new ZombieSpawner(null);
+		zombieSpawner = new ZombieSpawner(null, 0, 0, 0, 0);
 	}
 
 	/**
