@@ -8,6 +8,7 @@ public class ZombieSpawner extends GameObject
 {
     ZombieFactory zombieFactory;
 
+
     public ZombieSpawner(BufferedImage image, Integer x, Integer y, Integer width, Integer height, ZombieFactory zombieFactory) {
         super(image, x, y, width, height);
         this.zombieFactory = zombieFactory;

@@ -25,10 +25,6 @@ public class Game
 	private Player			player;
 	private ZombieSpawner	zombieSpawner;
 
-    public List<Zombie> getZombies() {
-        return zombies;
-    }
-
     public Game()
 	{
 		Framework.gameState = Framework.GameState.GAME_CONTENT_LOADING;
