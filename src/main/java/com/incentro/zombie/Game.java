@@ -2,6 +2,9 @@ package com.incentro.zombie;
 
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +13,8 @@ import com.incentro.zombie.game.Zombie;
 import com.incentro.zombie.game.ZombieSpawner;
 import com.incentro.zombie.game.factory.PlayerFactory;
 import com.incentro.zombie.game.factory.ZombieFactory;
+
+import javax.imageio.ImageIO;
 
 /**
  * Actual game.
@@ -24,6 +29,8 @@ public class Game
     private List<Zombie>	zombies;
 	private Player			player;
 	private ZombieSpawner	zombieSpawner;
+
+    private BufferedImage backgroundImage;
 
     public Game()
 	{
@@ -50,6 +57,13 @@ public class Game
 	 */
 	private void Initialize()
 	{
+        try {
+            URL imageURL = this.getClass().getResource("/images/background.png");
+            backgroundImage = ImageIO.read(imageURL);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         playerFactory = new PlayerFactory(this);
         ZombieFactory zombieFactory = new ZombieFactory(this);
 
@@ -103,7 +117,8 @@ public class Game
 	 */
 	public void Draw(Graphics2D g2d, Point mousePosition)
 	{
-		player.draw(g2d, mousePosition);
+        g2d.drawImage(backgroundImage, 0, 0, null);
+        player.draw(g2d, mousePosition);
 		for (Zombie zombie : zombies)
 		{
 			zombie.draw(g2d, mousePosition);
@@ -116,6 +131,12 @@ public class Game
 		return playerFactory;
 	}
 
+	public void addZombie(Zombie zombie)
+	{
+		zombie.getBehaviour().init(zombie, player);
+		this.zombies.add(zombie);
+	}
+	
 	public List<Zombie> getZombies()
 	{
 		return zombies;
